@@ -18,6 +18,15 @@ spec:
       resources:
         limits:
           cpu: "0.1"
+          memory: 32M
+      livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "redis-cli -h $(hostname) ping"
+          initialDelaySeconds: 20
+          periodSeconds: 3
       volumeMounts:
         - mountPath: /redis-master-data
           name: data
