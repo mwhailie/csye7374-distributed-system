@@ -1,3 +1,5 @@
+# Create a config map to configure the password of redis
+
 # Create a redis secret
 kubectl create -f secret.yaml
 
