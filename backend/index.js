@@ -1,5 +1,6 @@
 const http = require("http");
 const redis = require("redis");
+const express = require('express');
 
 const port = 8082;
 
@@ -23,11 +24,11 @@ redisClient.on("error", err => {
   isRedisConnected = false;
 });
 
-
-
 console.log(`Server starting at ${port}`);
 
-let handler = function(request, response) {
+const app = express();
+
+app.get('/', function(request, response) {
   console.log("Received request from " + request.connection.remoteAddress);
   const ipAddress = request.connection.remoteAddress;
   console.log(ipAddress);
@@ -54,7 +55,8 @@ let handler = function(request, response) {
     response.write(JSON.stringify(process.env, null, 2));
     response.end();
   };
-};
+});
 
-let www = http.createServer(handler);
-www.listen(port);
+app.listen(port, () => {
+  console.log('Listening on' + port);
+});
