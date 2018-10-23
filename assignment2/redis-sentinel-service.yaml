@@ -9,6 +9,6 @@ spec:
   type: LoadBalancer 
   ports:
     - port: 8089
-      targetPort: 26379
+      targetPort: 6379
   selector:
     redis-sentinel: "true"
