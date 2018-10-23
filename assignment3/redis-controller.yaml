@@ -34,6 +34,8 @@ spec:
           volumeMounts:
             - mountPath: /redis-master-data
               name: data
+            - mountPath: /redis-master
+              name: config
         - name: sentinel
           image: k8s.gcr.io/redis:v1
           ports:
@@ -50,3 +52,10 @@ spec:
               name: data
       volumes:
         - name: data
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: redis-pass
+            items:
+            - key: redis-config
+              path: redis.conf
