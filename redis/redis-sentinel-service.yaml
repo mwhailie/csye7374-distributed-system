@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: master
+    role: service
+  name: redis-master-service
+spec:
+  type: LoadBalancer 
+  selector:
+    app: redis-master
+  ports:
+    - port: 6379
+      targetPort: 6379
+  
