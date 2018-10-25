@@ -6,20 +6,14 @@ run the following shell script in the command line to bring up redis server
 ./redis-deployment.sh
 ```
 
-install [redis-cli](https://redis.io/topics/rediscli) if needed
+Open browser, type in **<host-ip:name>** and enter. 
 
-use command
-```
-redis-cli -h <host-ip/name> -p 8089 ping 
-```
-If redis server is up and running, you will get the following response 
-```
-PONG
-```
+You will see a page listing all the environment variables in JSON format.  
 
 You can get **<host-ip/name>** using 
 ```
 kubectl get svc
 ```
+
 
  
