@@ -54,8 +54,8 @@ spec:
         - name: data
           emptyDir: {}
         - name: config
-          configMap:
-            name: redis-pass
+          secret:
+            secretName: redis-secret
             items:
-            - key: redis-config
+            - key: config
               path: redis.conf
