@@ -9,7 +9,8 @@ let isRedisConnected = false;
 const redisConfig = {
   port: 8089,
   host:
-    "a64f34c93d65e11e89b520a7452f1b75-1936300979.us-east-1.elb.amazonaws.com"
+    "a7f257249d80811e8961b1224cf15714-1732400760.us-east-1.elb.amazonaws.com",
+  password: "assignment3"
 };
 
 const redisClient = redis.createClient(redisConfig);
