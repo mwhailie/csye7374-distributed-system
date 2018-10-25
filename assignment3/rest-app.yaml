@@ -46,11 +46,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            memory: "8Mi"
-            cpu: "1m"
+            memory: "32Mi"
+            cpu: "100m"
           requests:
-            memory: "8Mi"
-            cpu: "1m"
+            memory: "32Mi"
+            cpu: "100m"
 
 ---
 apiVersion: v1
