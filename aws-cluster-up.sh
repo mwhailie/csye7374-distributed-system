@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [[ $# -eq 0 ]] ; then
-    PS3='Please choose  your domain: '
-	options=("fangn.k8s.tejasparikh.com" "demo.csye6225-spring2018-wux.me" "demo.csye6225-fall2017-mawenhe.me" "Quit")
+    PS3='Please choose your domain to create a cluster: '
+	options=("fangn.k8s.tejasparikh.com" "demo.csye6225-spring2018-wux.me" "demo.csye6225-fall2017-mawenhe.me")
 	select opt in "${options[@]}"
 	do
 	    case $opt in
