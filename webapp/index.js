@@ -6,7 +6,7 @@ const port = 8082;
 let isRedisConnected = false;
 
 const redisConfig = {
-  port: 8089,
+  //port: 8089,
   host: process.env.SERVICE_NAME,
   password: process.env.REDIS_PASSWD
 };
