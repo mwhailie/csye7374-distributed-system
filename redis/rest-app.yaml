@@ -20,7 +20,7 @@ spec:
         app: csye7374-app
     spec:
       containers:
-      - image: fangn/csye7374     
+      - image: fangn/csye7374:pw     
         name: csye7374-app-container
         env:
         - name: SERVICE_NAME                
