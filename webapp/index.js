@@ -7,7 +7,7 @@ let isRedisConnected = false;
 
 const redisConfig = {
   host: process.env.SERVICE_NAME,
-  password: "assignment3"
+  password: process.env.REDIS_PASSWD
 };
 
 const redisClient = redis.createClient(redisConfig);
@@ -43,7 +43,7 @@ let handler = function(request, response) {
       } else {
         redisClient.set(ipAddress, parseInt(result) + 1, (error, result) => {
           if (error) console.log(error);
-          console.log(`now the result is ${result}`);
+          console.log(`the result has been updated`);
         });
       }
     });
