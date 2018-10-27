@@ -20,7 +20,7 @@ spec:
         app: csye7374-app
     spec:
       containers:
-      - image: fangn/csye7374     
+      - image: fangn/csye7374:pw     
         name: csye7374-app-container
         env:
         - name: SERVICE_NAME                
@@ -28,7 +28,6 @@ spec:
             configMapKeyRef:             
               name: csye7374-app-config     
               key: redis_service_name
-
         - name: REDIS_PASSWD                
           valueFrom:                     
             secretKeyRef:             

@@ -6,7 +6,6 @@ const port = 8082;
 let isRedisConnected = false;
 
 const redisConfig = {
-  port: 8089,
   host: process.env.SERVICE_NAME,
   password: process.env.REDIS_PASSWD
 };
@@ -44,7 +43,7 @@ let handler = function(request, response) {
       } else {
         redisClient.set(ipAddress, parseInt(result) + 1, (error, result) => {
           if (error) console.log(error);
-          console.log(`now the result is ${result}`);
+          console.log(`the result has been updated`);
         });
       }
     });
