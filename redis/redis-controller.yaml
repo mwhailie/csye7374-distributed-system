@@ -55,6 +55,15 @@ spec:
           volumeMounts:
             - mountPath: /redis-master-data
               name: data
+        - name: redis-exporter
+          image: oliver006/redis_exporter:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+          - containerPort: 9121
       volumes:
         - name: data
           emptyDir: {}
+      
