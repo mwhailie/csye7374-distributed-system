@@ -8,6 +8,9 @@ spec:
     app: redis-master
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9121"
       labels:
         app: redis-master
         name: redis-master
@@ -55,6 +58,14 @@ spec:
           volumeMounts:
             - mountPath: /redis-master-data
               name: data
+        - name: redis-exporter
+          image: oliver006/redis_exporter:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+          - containerPort: 9121
       volumes:
         - name: data
           emptyDir: {}
