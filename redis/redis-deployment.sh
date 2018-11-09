@@ -9,8 +9,11 @@ kubectl create -f redis-controller.yaml
 # # Create a service to track the sentinels
 kubectl create -f redis-sentinel-service.yaml
 
+kubectl create -f redis-monitor-service.yaml
+
 ##create configmap, service and replication controller for rest-app
 kubectl create -f rest-app.yaml
+
 
 
 

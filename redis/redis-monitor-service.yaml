@@ -5,6 +5,7 @@ metadata:
   labels:
     app: redis-monitor
     k8s-app: redis
+    prometheus: kube-prometheus
   annotations:
     prometheus.io/scrape: 'true'
     prometheus.io/port: "9121" 
@@ -25,15 +26,14 @@ metadata:
   name: redis-metrics
   labels:
     app: redis-metrics
+    prometheus: kube-prometheus
   namespace: monitoring
 spec:
   selector:
     matchLabels:
       app: redis-monitor
-  namespaceSelector:
-    matchNames:
-    - default
   endpoints:
   - port: redis-metrics-port
     interval: 20s
-
+  namespaceSelector:
+    any: true
