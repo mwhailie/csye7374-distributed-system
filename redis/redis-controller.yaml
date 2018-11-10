@@ -64,6 +64,12 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
+          env: 
+            - name: REDIS_PASSWORD
+              valueFrom:                     
+                secretKeyRef:             
+                  name: redis-secret     
+                  key: config
           ports:
           - containerPort: 9121
       volumes:

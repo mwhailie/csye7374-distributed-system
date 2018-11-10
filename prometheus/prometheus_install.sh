@@ -1,6 +1,6 @@
 #!/bin/bash
+
 kubectl apply -f helm-service-account.yaml
-cd prometheus
 kubectl apply -f namespace.yaml
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init
