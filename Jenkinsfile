@@ -11,6 +11,7 @@ podTemplate(label: 'mypod', containers: [
             checkout scm
             commitId = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         }
+        def repository
         stage('Build Docker Image') {
             container('docker') {
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', 
@@ -22,12 +23,13 @@ podTemplate(label: 'mypod', containers: [
                     sh "docker build ./webapp -t ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
                     sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD} "
                     sh "docker push ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
+                    repository = "${env.DOCKER_HUB_USER}"
                 }
             }
         }
         stage('Update Kubernetes') {
             container('kubectl') {
-                sh "kubectl rolling-update csye7374-app-rc --image ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER}"
+                sh "kubectl rolling-update csye7374-app-rc --image ${repository}/csye7374:${env.BUILD_NUMBER}"
             }
         }
     }
