@@ -7,10 +7,6 @@ podTemplate(label: 'mypod', containers: [
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
   ]) {
     node('mypod') {
-        stage ('Extract') {
-            checkout scm
-            commitId = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-        }
         def repository
         stage('Build Docker Image') {
             container('docker') {
@@ -29,7 +25,7 @@ podTemplate(label: 'mypod', containers: [
         }
         stage('Update Kubernetes') {
             container('kubectl') {
-                sh "kubectl set image deployment csye7374-app-rc --image ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER}"
+                sh "kubectl rolling-update csye7374-app-rc --image ${repository}/csye7374:${env.BUILD_NUMBER}"
             }
         }
     }
