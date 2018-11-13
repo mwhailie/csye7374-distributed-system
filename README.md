@@ -23,7 +23,7 @@ Run dashboard.sh and follow instruction to access dashboard
 ./dashboard.sh 
 ```
 ### Redis deployment
-Please see assignment2 folder for Redis deployment
+Please see assignment4 folder for Redis deployment
 
 ### Shut down cluster
 
