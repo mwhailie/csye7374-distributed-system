@@ -16,17 +16,18 @@ podTemplate(label: 'mypod', containers: [
                             passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     git credentialsId: 'a37d972d-be32-44fe-a6c7-c2f8fc5da303', url: 'https://github.com/mwhailie/csye7374-fall2018.git'
                     sh "ls -al"
+                    repository = "${env.DOCKER_HUB_USER}/csye7374"
                     sh "docker build ./webapp -t ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
                     sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD} "
                     sh "docker push ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
-                    repository = "${env.DOCKER_HUB_USER}"
+                    
                 }
             }
         }
         stage('Update Kubernetes') {
             container('kubectl') {
-                sh "kubectl rolling-update csye7374-app-rc --image ${repository}/csye7374:${env.BUILD_NUMBER}"
+                sh "kubectl rolling-update csye7374-app-rc --image ${repository}:${env.BUILD_NUMBER}"
             }
         }
     }
-  }
+}
