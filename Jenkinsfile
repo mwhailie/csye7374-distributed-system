@@ -24,7 +24,7 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy k') {
             container('kubectl') {
                 sh "kubectl rolling-update csye7374-app-rc --image ${repository}:${env.BUILD_NUMBER} --image-pull-policy IfNotPresent"
             }
