@@ -7,6 +7,7 @@ podTemplate(label: 'mypod', containers: [
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
   ]) {
     node('mypod') {
+        def repository
         stage('Build Docker Image') {
             container('docker') {
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', 
@@ -15,6 +16,7 @@ podTemplate(label: 'mypod', containers: [
                             passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     git credentialsId: 'git', url: 'https://github.com/mwhailie/csye7374-fall2018.git'
                     sh "ls -al"
+                    docker_repository = "${env.DOCKER_HUB_USER}/csye7374"
                     sh "docker build ./webapp -t ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
                     sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD} "
                     sh "docker push ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
@@ -23,7 +25,7 @@ podTemplate(label: 'mypod', containers: [
         }
         stage('Update Kubernetes') {
             container('kubectl') {
-                sh "kubectl rolling-update csye7374-app-rc --image ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER}"
+                sh "kubectl rolling-update csye7374-app-rc --image ${docker_repository}:${env.BUILD_NUMBER}"
             }
         }
     }
