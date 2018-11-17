@@ -49,11 +49,13 @@ Run asw-cluster-down.sh to delete all resources created when you finish
 ./aws-cluster-down.sh
 ```
 
-## Assignment 4
+## Assignment 4 Monitoring
 
-## Assignment 5
+1. Setup Prometheus to Collect Metrics
+2. Run Redis Exporter to Export Metrics
+3. Setup Grafana Dashboards to Monitor Metrics
 
-Setup Continuous Deployment pipeline for web application. 
+## Assignment 5 CI/CD pipeline
 
 1. Code changes are committed to GitHub. Your build system (Jenkins) can either monitor GitHub for changes or it can be configured to be notified by GitHub about new commit.
 2. Clone the repository with latest code and build the container. Container should be tagged with build number. Build number will serve as “version” of your application/container. You may alternatively use date/time for container version number.
