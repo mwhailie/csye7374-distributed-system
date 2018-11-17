@@ -7,7 +7,7 @@ podTemplate(label: 'mypod', containers: [
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
   ]) {
     node('mypod') {
-        def repository
+        def docker_repository
         stage('Build Docker Image') {
             container('docker') {
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', 
