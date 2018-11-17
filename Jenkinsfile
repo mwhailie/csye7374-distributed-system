@@ -15,7 +15,6 @@ podTemplate(label: 'mypod', containers: [
                             usernameVariable: 'DOCKER_HUB_USER', 
                             passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     git credentialsId: 'git', url: 'https://github.com/mwhailie/csye7374-fall2018.git'
-                    sh "ls -al"
                     docker_repository = "${env.DOCKER_HUB_USER}/csye7374"
                     sh "docker build ./webapp -t ${env.DOCKER_HUB_USER}/csye7374:${env.BUILD_NUMBER} "
                     sh "docker login -u ${env.DOCKER_HUB_USER} -p ${env.DOCKER_HUB_PASSWORD} "
