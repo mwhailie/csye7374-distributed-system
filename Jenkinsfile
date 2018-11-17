@@ -8,7 +8,7 @@ podTemplate(label: 'mypod', containers: [
   ]) {
     node('mypod') {
         def docker_repository
-        stage('Build Docker Image') {
+        stage('Build') {
             container('docker') {
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', 
                             credentialsId: 'dockerhub',
