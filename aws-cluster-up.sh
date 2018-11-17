@@ -30,6 +30,6 @@ fi
 
 export KOPS_STATE_STORE=s3://$NAME
 
-kops create cluster --zones=us-east-1a --node-count=3 --node-size=t2.micro  --master-count=1  --master-size=t2.micro $NAME
+kops create cluster --zones=us-east-1a --node-count=3 --node-size=t2.medium  --master-count=1  --master-size=t2.medium $NAME
 
 kops update cluster $NAME --yes

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-monitor-svc
+  labels:
+    app: redis-monitor
+    k8s-app: redis
+    prometheus: kube-prometheus
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: "9121" 
+spec:
+  ports:
+  - name: redis-metrics-port
+    port: 9121
+    targetPort: 9121
+    protocol: TCP
+  selector:
+    app: redis-master
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis-metrics
+  labels:
+    app: redis-metrics
+    prometheus: kube-prometheus
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: redis-monitor
+  endpoints:
+  - port: redis-metrics-port
+    interval: 20s
+  namespaceSelector:
+    any: true

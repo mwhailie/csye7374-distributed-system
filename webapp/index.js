@@ -49,6 +49,7 @@ let handler = function(request, response) {
     });
     response.writeHead(200);
     response.write(JSON.stringify(process.env, null, 2));
+    response.write("</br>Testing CI/CD With Jenkins");
     response.end();
   }
 };
