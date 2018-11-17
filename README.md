@@ -32,12 +32,16 @@ Run prometheus_install.sh located inside prometheus folderto bring up prometheus
 
 
 ### Redis deployment
+<<<<<<< HEAD
 Run redis-deployment.sh located in redis folder to bring up redis server
 
 ```
 ./redis-deployment.sh
 ```
 
+=======
+Please see assignment4 folder for Redis deployment
+>>>>>>> 5ec36815531bad7db9aad01f7eaa251b93f20176
 
 ### Shut down cluster
 
