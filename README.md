@@ -11,13 +11,13 @@ This is a git repo for [CSYE 7374 - Advanced Cloud Computing (Fall 2018)](https:
 ## Assignment 3 - Redis on Kubernetes Cluster
 
 ### Bring up kubernetes cluster
-Run aws-cluster-up.sh to bring up kubernetes cluster on AWS
+Run [aws-cluster-up.sh](https://github.com/mwhailie/csye7374-fall2018/blob/master/aws-cluster-up.sh) to bring up kubernetes cluster on AWS
 
 ```
 ./aws-cluster-up.sh
 ```
 ### Access dashboard
-Run dashboard.sh and follow instruction to access dashboard
+Run [dashboard.sh](https://github.com/mwhailie/csye7374-fall2018/blob/master/dashboard.sh) and follow instruction to access dashboard
 
 ```
 ./dashboard.sh 
@@ -25,7 +25,7 @@ Run dashboard.sh and follow instruction to access dashboard
 
 ### Redis deployment
 
-Run redis-deployment.sh located in redis folder to bring up redis server
+Run [redis-deployment.sh](https://github.com/mwhailie/csye7374-fall2018/blob/master/redis/redis-deployment.sh) located in redis folder to bring up redis server
 
 ```
 ./redis-deployment.sh
@@ -35,7 +35,7 @@ Please see assignment4 folder for Redis deployment
 
 ### Shut down cluster
 
-Run asw-cluster-down.sh to delete all resources created when you finish 
+Run [asw-cluster-down.sh](https://github.com/mwhailie/csye7374-fall2018/blob/master/aws-cluster-down.sh) to delete all resources created when you finish 
 
 ```
 ./aws-cluster-down.sh
