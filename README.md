@@ -43,35 +43,44 @@ Run asw-cluster-down.sh to delete all resources created when you finish
 
 ## Assignment 4 - Monitoring
 
-### 1. Setup Prometheus to Collect Metrics
+### Objectives
 
-Prometheus deployment
-Run prometheus_install.sh located inside prometheus folder to bring up prometheus
+1. Setup Prometheus to collect metrics
+2. Run Redis Exporter in a sidecar along with Redis server and sentinel to export metrics
+3. Setup Grafana Dashboards to monitor metrics
+
+
+### Prometheus deployment
+
+Run [prometheus_install.sh](https://github.com/mwhailie/csye7374-fall2018/blob/master/prometheus_install.sh) located in root folder to bring up prometheus
 
 ```
 ./prometheus_install.sh
 ```
 
-2. Run Redis Exporter to Export Metrics
+### Grafana dashboard configuration
 
-
-
-3. Setup Grafana Dashboards to Monitor Metrics
-
-```
-kubectl port-forward (kubectl get  pods --selector=app=kube-prometheus-grafana -n  monitoring --output=jsonpath="{.items..metadata.name}") -n monitoring  3000
-```
-Sign in to grafana with admin/admin.
+Browse to localhost:3000. Sign in to grafana with admin/admin, select data source, and import grafana dashboard.
 
 
 ## Assignment 5 - CI/CD pipeline
 
+### Objectives
 1. Code changes are committed to GitHub. Jenkins can monitor GitHub for changes.
-2. Clone the repository with latest code and build the container. Container should be tagged with build number. Build number will serve as “version” of your application/container. You may alternatively use date/time for container version number.
-3. Push the container to your container registry.
-4. Update your app Deployment using “Rolling Update” strategy with zero downtime.
+2. Clone the repository with latest code and build the container. Container is tagged with build number. Build number will serve as “version” of the application/container.
+3. Push the container to the container registry.
+4. Update the app Deployment using “Rolling Update” strategy with zero downtime.
 
-[Jenkinsfile](https://github.com/mwhailie/csye7374-fall2018/blob/master/Jenkinsfile)
+### Jenkins configuration:
+
+1. Add web hook and ssh key to git repo
+2. Install GitHub integration plugin
+3. Add git server(Advance-> convert login and password to credential), test connection
+4. Add dockerhub credential
+5. Create a new item 
+    1. General -> select GitHub project, give project url 
+    2. Build Triggers -> GitHub Branches Hooks * * * * * GitHub hook trigger for GITSCM polling
+    3. Pipeline -> Pipeline script from SCM. Jenkins will pull [Jenkinsfile](https://github.com/mwhailie/csye7374-fall2018/blob/master/Jenkinsfile) from git repo.
 
 ## Reference
 
