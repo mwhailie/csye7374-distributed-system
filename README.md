@@ -85,6 +85,7 @@ Browse to localhost:3000. Sign in to grafana with admin/admin, select data sourc
 ## Reference
 
 - [CSYE 7374 - Advanced Cloud Computing (Fall 2018)](https://csye7374.tejasparikh.com)
+- [Reliable, Scalable Redis on Kubernetes](https://github.com/kubernetes/examples/tree/master/staging/storage/redis)
 - [Kubernetes monitoring with Prometheus in 15 minutes](https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13)
 - [Redis Exporter with Grafana dashboard example](https://github.com/oliver006/redis_exporter)
 - [Build a Continuous Deployment Pipeline with Jenkins and Kubernetes](https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes)
