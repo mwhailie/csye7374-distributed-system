@@ -1,0 +1,33 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: app-resource-metrics-cpu 
+spec:
+  scaleTargetRef:
+    kind: ReplicationController 
+    name: csye7374-app-rc 
+  minReplicas: 1 
+  maxReplicas: 100
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 5
+
+---
+
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: redis-resource-metrics-cpu 
+spec:
+  scaleTargetRef: 
+    kind: ReplicationController 
+    name: redis-controller 
+  minReplicas: 1 
+  maxReplicas: 100
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 5

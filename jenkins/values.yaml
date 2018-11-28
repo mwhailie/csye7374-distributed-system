@@ -11,6 +11,7 @@ Master:
   Memory: "3500Mi"
   JavaOpts: "-Xms3500m -Xmx3500m"
   ServiceType: LoadBalancer
+  ServicePort: 8080
 Agent:
   Enabled: true
   resources:
