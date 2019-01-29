@@ -80,7 +80,7 @@ Browse to localhost:3000. Sign in to grafana with admin/admin, select data sourc
 5. Create a new item 
     1. General -> select GitHub project, give project url 
     2. Build Triggers -> GitHub Branches Hooks * * * * * GitHub hook trigger for GITSCM polling
-    3. Pipeline -> Pipeline script from SCM. Jenkins will pull [Jenkinsfile](https://github.com/mwhailie/csye7374-fall2018/blob/master/Jenkinsfile) from git repo.
+    3. Pipeline -> Pipeline script from SCM. Jenkins will pull [Jenkinsfile](https://github.com/mwhailie/csye7374-fall2018/blob/master/jenkins/Jenkinsfile) from git repo.
 
 ## Reference
 
